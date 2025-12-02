@@ -55,19 +55,17 @@ class ProductService {
 	 * @returns {Object} updated product 	Object.
 	 */
 	async update(productId, productData) {
-		const product = productDB.find((product) => product._id === Number(productId));
-		console.log(`TESTING COMMAND`, product);
-		if (!product) {
+		const productIndex = productDB.findIndex((product) => product._id === Number(productId));
+		if (productIndex === -1) {
 			throw new ApiError(StatusCodes.NOT_FOUND, 'Product not found');
 		}
+		productDB[productIndex] = {
+			...productDB[productIndex],
+			...productData,
+			updatedAt: Date.now(),
+		};
 
-		product.name = productData.name || product.name;
-		product.description = productData.description || product.description;
-		product.price = productData.price || product.price;
-		product.category = productData.category || product.category;
-		product.inStock = productData.inStock || product.inStock;
-		product.updatedAt = Date.now();
-		return product;
+		return productDB[productIndex];
 	}
 	/**
 	 * @param {String} productId
