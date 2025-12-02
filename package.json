@@ -1,0 +1,25 @@
+{
+	"name": "02-product-in-memory-crud",
+	"version": "1.0.0",
+	"description": "",
+	"main": "main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "npx nodemon main.js",
+		"start": "node main.js",
+		"format:check": "prettier -c \"app/**/*.js\"",
+		"format:fix": "prettier -w \"app/**/*.js\""
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"dependencies": {
+		"dotenv": "^17.2.3",
+		"express": "^5.2.1",
+		"http-status-codes": "^2.3.0"
+	},
+	"devDependencies": {
+		"prettier": "^3.7.3"
+	}
+}
