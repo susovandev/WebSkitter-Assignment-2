@@ -8,6 +8,9 @@ const productValidation = {
 		category: Joi.string().required(),
 		inStock: Joi.boolean().default(true).required(),
 	}),
+	getProductByIdSchema: Joi.object({
+		productId: Joi.number().integer().required(),
+	}),
 };
 
 module.exports = productValidation;

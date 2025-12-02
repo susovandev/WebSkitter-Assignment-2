@@ -11,6 +11,16 @@ const router = express.Router();
  */
 router.route('/').get(productController.getProductsHandler);
 /**
+ * @route GET http://localhost:5000/api/products/:productId
+ * @description Get a product by its ID.
+ */
+router
+	.route('/:productId')
+	.get(
+		validateSchema(productValidation.getProductByIdSchema, 'params'),
+		productController.getProductByIdHandler,
+	);
+/**
  * @route POST http://localhost:5000/api/products
  * @description Save product to In-memory database.
  */

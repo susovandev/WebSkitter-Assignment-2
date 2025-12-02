@@ -16,6 +16,20 @@ class ProductService {
 		return productList;
 	}
 	/**
+	 * @param {String} productId
+	 * @description Get a product by its ID.
+	 * @throws {ApiError} if product is not found.
+	 * @returns {Object} product object.
+	 */
+	async getById(productId) {
+		const product = productDB.find((product) => product._id === Number(productId));
+		if (!product) {
+			throw new ApiError(StatusCodes.NOT_FOUND, 'Products not found');
+		}
+
+		return product;
+	}
+	/**
 	 * @param {Object} productData
 	 * @description Save product to In-memory database.
 	 * @throws {ApiError} if product creation fails.
