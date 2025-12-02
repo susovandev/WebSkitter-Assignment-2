@@ -30,5 +30,16 @@ router
 		validateSchema(productValidation.createProductSchema, 'body'),
 		productController.createProductHandler,
 	);
+/**
+ * @route PUT http://localhost:5000/api/products/:productId
+ * @description Update an existing product.
+ */
+router
+	.route('/:productId')
+	.put(
+		validateSchema(productValidation.getProductByIdSchema, 'params'),
+		validateSchema(productValidation.updateProductSchema, 'body'),
+		productController.updateProductHandler,
+	);
 
 module.exports = router;

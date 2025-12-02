@@ -11,6 +11,13 @@ const productValidation = {
 	getProductByIdSchema: Joi.object({
 		productId: Joi.number().integer().required(),
 	}),
+	updateProductSchema: Joi.object({
+		name: Joi.string().min(3).max(100).optional(),
+		description: Joi.string().min(10).max(500).optional(),
+		price: Joi.number().precision(2).greater(0).optional(),
+		category: Joi.string().optional(),
+		inStock: Joi.boolean().default(true).optional(),
+	}),
 };
 
 module.exports = productValidation;

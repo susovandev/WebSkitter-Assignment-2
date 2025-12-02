@@ -47,6 +47,28 @@ class ProductService {
 		}
 		return productDB[productDB.length - 1];
 	}
+	/**
+	 * @param {String} productId
+	 * @param {Object} productData
+	 * @description Update an existing product by its ID in In-memory database.
+	 * @throws {ApiError} if product not found.
+	 * @returns {Object} updated product 	Object.
+	 */
+	async update(productId, productData) {
+		const product = productDB.find((product) => product._id === Number(productId));
+		console.log(`TESTING COMMAND`, product);
+		if (!product) {
+			throw new ApiError(StatusCodes.NOT_FOUND, 'Product not found');
+		}
+
+		product.name = productData.name || product.name;
+		product.description = productData.description || product.description;
+		product.price = productData.price || product.price;
+		product.category = productData.category || product.category;
+		product.inStock = productData.inStock || product.inStock;
+		product.updatedAt = Date.now();
+		return product;
+	}
 }
 
 module.exports = new ProductService();

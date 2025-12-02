@@ -22,7 +22,7 @@ class ProductController {
 
 		return res
 			.status(StatusCodes.OK)
-			.json(new ApiResponse(true, 'Product retrieved successfully', product));
+			.json(new ApiResponse(StatusCodes.OK, 'Product retrieved successfully', product));
 	});
 	createProductHandler = asyncHandler(async (req, res) => {
 		console.log(
@@ -34,6 +34,17 @@ class ProductController {
 		return res
 			.status(StatusCodes.CREATED)
 			.json(new ApiResponse(StatusCodes.CREATED, 'Product created successfully', newProduct));
+	});
+	updateProductHandler = asyncHandler(async (req, res) => {
+		console.log(
+			`[AuthController] update product request received with body: ${JSON.stringify(req.body)} and id: ${req.params.productId}`,
+		);
+		// Delegate core logic to service layer
+		const updatedProduct = await productService.update(req.params.productId, req.body);
+
+		return res
+			.status(StatusCodes.OK)
+			.json(new ApiResponse(StatusCodes.OK, 'Product updated successfully', updatedProduct));
 	});
 }
 
