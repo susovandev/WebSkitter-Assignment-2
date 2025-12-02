@@ -19,7 +19,9 @@ app.get('/', (req, res) => {
 		message: 'Hello World',
 	});
 });
-
+// Product Routes
+const productRoutes = require('./routes/product.routes');
+app.use('/api/products', productRoutes);
 // 404 handler
 app.use(routeNotFoundHandler);
 

@@ -6,6 +6,8 @@ const productDatabase = [
 		price: 100,
 		category: 'Men',
 		inStock: true,
+		createdAt: Date.now(),
+		updatedAt: Date.now(),
 	},
 	{
 		_id: 2,
@@ -14,6 +16,8 @@ const productDatabase = [
 		price: 200,
 		category: 'Female',
 		inStock: false,
+		createdAt: Date.now(),
+		updatedAt: Date.now(),
 	},
 	{
 		_id: 3,
@@ -22,6 +26,8 @@ const productDatabase = [
 		price: 300,
 		category: 'Men',
 		inStock: true,
+		createdAt: Date.now(),
+		updatedAt: Date.now(),
 	},
 ];
 
