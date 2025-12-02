@@ -2,6 +2,9 @@ const express = require('express');
 const constants = require('./constants');
 const { StatusCodes } = require('http-status-codes');
 
+const routeNotFoundHandler = require('./middlewares/404.middleware');
+const globalErrorHandler = require('./middlewares/error.middleware');
+
 const app = express();
 
 // Body parser middleware
@@ -17,4 +20,9 @@ app.get('/', (req, res) => {
 	});
 });
 
+// 404 handler
+app.use(routeNotFoundHandler);
+
+// Error handler
+app.use(globalErrorHandler);
 module.exports = app;
