@@ -4,6 +4,15 @@ const productService = require('../services/product.service');
 const { StatusCodes } = require('http-status-codes');
 
 class ProductController {
+	getProductsHandler = asyncHandler(async (req, res) => {
+		console.log(`[AuthController] Fetch all products request received`);
+		// Delegate core logic to service layer
+		const products = await productService.getAll();
+
+		return res
+			.status(StatusCodes.OK)
+			.json(new ApiResponse(StatusCodes.OK, 'Products retrieved successfully', products));
+	});
 	createProductHandler = asyncHandler(async (req, res) => {
 		console.log(
 			`[AuthController] create product request received with body: ${JSON.stringify(req.body)}`,

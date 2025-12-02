@@ -3,6 +3,19 @@ const ApiError = require('../utils/apiError.utils');
 const { StatusCodes } = require('http-status-codes');
 class ProductService {
 	/**
+	 * @description Retrieve all products from In-memory database.
+	 * @throws {ApiError} if products is not found.
+	 * @returns {Array} list of products.
+	 */
+	async getAll() {
+		const productList = productDB;
+		if (!productList.length) {
+			throw new ApiError(StatusCodes.NOT_FOUND, 'Products not found');
+		}
+
+		return productList;
+	}
+	/**
 	 * @param {Object} productData
 	 * @description Save product to In-memory database.
 	 * @throws {ApiError} if product creation fails.

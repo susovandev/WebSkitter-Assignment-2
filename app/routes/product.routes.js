@@ -6,6 +6,11 @@ const productController = require('../controllers/product.controller');
 const router = express.Router();
 
 /**
+ * @route GET http://localhost:5000/api/products
+ * @description Retrieve all products from In-memory database.
+ */
+router.route('/').get(productController.getProductsHandler);
+/**
  * @route POST http://localhost:5000/api/products
  * @description Save product to In-memory database.
  */
