@@ -298,7 +298,7 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "statusCode": 200, 
+  "statusCode": 200,
   "status": true,
   "message": "Product updated successfully",
   "data": {
@@ -346,7 +346,7 @@ Errors are returned in the following format:
 HTTP/1.1 400 Bad Request
 Content-Type: application/json
 {
-  "statusCode": 400, 
+  "statusCode": 400,
   "status": false,
   "message": "Validation error: 'name' is required."
   stack: "Error stack trace here" (in development mode only)
@@ -370,10 +370,8 @@ file.
 
 ## 📬 Postman Collection
 
-A Postman collection is provided in the `postman/ProductManagementCRUD.json` file. You can download
-this file and import it into Postman to easily test the API endpoints. You can import this
-collection into Postman to quickly access and test all the available API routes.
-
-## 👉 **[Download Postman Collection](./postman/ProductManagementCRUD.json)**
+A Postman collection is provided in the `postman/Inmemory_Product_CRUD.postman_collection.json`
+file. You can download this file and import it into Postman to easily test the API endpoints. You
+can import this collection into Postman to quickly access and test all the available API routes.
 
 ---
