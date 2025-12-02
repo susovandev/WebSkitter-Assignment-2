@@ -91,6 +91,8 @@ app/
 ├─ routes/
 │  └─ product.routes.js
 └─ app.js
+public/uploads/
+views/
 postman/Inmemory_Product_CRUD.postman_collection.json
 main.js
 package.json
