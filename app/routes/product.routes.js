@@ -41,5 +41,15 @@ router
 		validateSchema(productValidation.updateProductSchema, 'body'),
 		productController.updateProductHandler,
 	);
+/**
+ * @route DELETE http://localhost:5000/api/products/:productId
+ * @description Remove a product by ID.
+ */
+router
+	.route('/:productId')
+	.delete(
+		validateSchema(productValidation.getProductByIdSchema, 'params'),
+		productController.deleteProductHandler,
+	);
 
 module.exports = router;

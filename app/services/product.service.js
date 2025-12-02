@@ -69,6 +69,20 @@ class ProductService {
 		product.updatedAt = Date.now();
 		return product;
 	}
+	/**
+	 * @param {String} productId
+	 * @description Remove a product by ID.
+	 * @throws {ApiError} if product not found.
+	 * @returns {Object} deleted product Object.
+	 */
+	async delete(productId) {
+		const product = productDB.findIndex((product) => product._id === Number(productId));
+		if (product === -1) {
+			throw new ApiError(StatusCodes.NOT_FOUND, 'Product not found');
+		}
+		productDB.splice(product, 1);
+		return true;
+	}
 }
 
 module.exports = new ProductService();
