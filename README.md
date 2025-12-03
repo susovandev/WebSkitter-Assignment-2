@@ -194,7 +194,7 @@ Content-Type: application/json
   "status": true,
   "message": "Product created successfully",
   "data": {
-    "_id": 1,
+    "_id": e1c9bbe4-9ce4-4cc9-b598-65e170021a48,
     "name": "Sample Product",
     "description": "This is a sample product.",
     "price": 200,
@@ -227,7 +227,7 @@ Content-Type: application/json
   "message": "Products fetched successfully",
   "data": [
     {
-      "_id": 1,
+      "_id": e1c9bbe4-9ce4-4cc9-b598-65e170021a48,
       "name": "Sample Product",
       "description": "This is a sample product.",
       "price": 200,
@@ -237,7 +237,7 @@ Content-Type: application/json
       "updatedAt": "2024-06-01T12:00:00.000Z"
     },
     {
-      "_id": 2,
+      "_id": e1c9bbe4-9ce4-4cc9-b598-65e170021a48,
       "name": "Another Product",
       "description": "This is another product.",
       "price": 5499,
@@ -256,7 +256,7 @@ Content-Type: application/json
 **Request:**
 
 ```http
-GET /api/products/1 HTTP/1.1
+GET /api/products/e1c9bbe4-9ce4-4cc9-b598-65e170021a48 HTTP/1.1
 ```
 
 **Response:**
@@ -269,7 +269,7 @@ Content-Type: application/json
   "status": true,
   "message": "Product fetched successfully",
   "data": {
-    "_id": 1,
+    "_id": e1c9bbe4-9ce4-4cc9-b598-65e170021a48,
     "name": "Sample Product",
     "description": "This is a sample product.",
     "price": 499,
@@ -286,7 +286,7 @@ Content-Type: application/json
 **Request:**
 
 ```http
-PUT /api/products/1 HTTP/1.1
+PUT /api/products/e1c9bbe4-9ce4-4cc9-b598-65e170021a48 HTTP/1.1
 Content-Type: application/json
 {
   "price": 499,
@@ -304,7 +304,7 @@ Content-Type: application/json
   "status": true,
   "message": "Product updated successfully",
   "data": {
-    "_id": 1,
+    "_id": e1c9bbe4-9ce4-4cc9-b598-65e170021a48,
     "name": "Sample Product",
     "description": "This is a sample product.",
     "price": 499,
@@ -321,7 +321,7 @@ Content-Type: application/json
 **Request:**
 
 ```http
-DELETE /api/products/1 HTTP/1.1
+DELETE /api/products/e1c9bbe4-9ce4-4cc9-b598-65e170021a48 HTTP/1.1
 ```
 
 **Response:**

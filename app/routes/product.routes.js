@@ -6,13 +6,45 @@ const productController = require('../controllers/product.controller');
 const router = express.Router();
 
 /**
- * @route GET http://localhost:5000/api/products
- * @description Retrieve all products from In-memory database.
+ * @swagger
+ * /api/products:
+ *   get:
+ *     summary: Get all products
+ *     tags:
+ *       - Product
+ *     responses:
+ *       200:
+ *         description: Products fetched successfully
+ *       404:
+ *         description: Products not found
+ *       500:
+ *         description: Server Error
  */
 router.route('/').get(productController.getProductsHandler);
+
 /**
- * @route GET http://localhost:5000/api/products/:productId
- * @description Get a product by its ID.
+ * @swagger
+ * /api/products/{productId}:
+ *   get:
+ *     summary: Get product by ID
+ *     tags:
+ *       - Product
+ *     parameters:
+ *       - in: path
+ *         name: productId
+ *         required: true
+ *         description: Product ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Product fetched successfully
+ *       400:
+ *         description: Invalid product ID
+ *       404:
+ *         description: Product not found
+ *       500:
+ *         description: Server Error
  */
 router
 	.route('/:productId')
@@ -20,9 +52,46 @@ router
 		validateSchema(productValidation.getProductByIdSchema, 'params'),
 		productController.getProductByIdHandler,
 	);
+
 /**
- * @route POST http://localhost:5000/api/products
- * @description Save product to In-memory database.
+ * @swagger
+ * /api/products:
+ *   post:
+ *     summary: create Product
+ *     tags:
+ *       - Product
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *      - in: body
+ *        name: Add Product
+ *        description: Add Product in In-memory database.
+ *        schema:
+ *          type: object
+ *          required:
+ *            - name
+ *            - description
+ *            - category
+ *            - price
+ *            - inStock
+ *          properties:
+ *            name:
+ *              type: string
+ *            description:
+ *              type: string
+ *            category:
+ *              type: string
+ *            price:
+ *              type: integer
+ *            inStock:
+ *              type: boolean
+ *     responses:
+ *        201:
+ *          description: Product created successfully
+ *        400:
+ *          description: Invalid request body
+ *        500:
+ *          description: Server Error
  */
 router
 	.route('/')
@@ -30,9 +99,53 @@ router
 		validateSchema(productValidation.createProductSchema, 'body'),
 		productController.createProductHandler,
 	);
+
 /**
- * @route PUT http://localhost:5000/api/products/:productId
- * @description Update an existing product.
+ * @swagger
+ * /api/products/{productId}:
+ *   put:
+ *     summary: Update a Product by ID
+ *     tags:
+ *       - Product
+ *     parameters:
+ *       - in: path
+ *         name: productId
+ *         required: true
+ *         description: Product ID
+ *         schema:
+ *           type: string
+ *       - in: body
+ *         name: Update student
+ *         description: Update Product in In-memory database.
+ *         schema:
+ *           type: object
+ *           required:
+ *             - name
+ *             - description
+ *             - price
+ *             - category
+ *             - inStock
+ *           properties:
+ *             name:
+ *               type: string
+ *             description:
+ *               type: string
+ *             price:
+ *               type: integer
+ *             category:
+ *               type: string
+ *             inStock:
+ *               type: boolean
+ *     responses:
+ *        200:
+ *          description: Product updated successfully
+ *        400:
+ *          description: Invalid 	product ID
+ *        404:
+ *          description: Product not found
+ *        500:
+ *          description: Server Error
+ *
  */
 router
 	.route('/:productId')
@@ -42,8 +155,28 @@ router
 		productController.updateProductHandler,
 	);
 /**
- * @route DELETE http://localhost:5000/api/products/:productId
- * @description Remove a product by ID.
+ * @swagger
+ * /api/products/{productId}:
+ *   delete:
+ *     summary: Delete a product by ID
+ *     tags:
+ *       - Product
+ *     parameters:
+ *       - in: path
+ *         name: productId
+ *         required: true
+ *         description: Product ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Product deleted successfully
+ *       400:
+ *         description: Invalid product ID
+ *       404:
+ *         description: Product not found
+ *       500:
+ *         description: Server Error
  */
 router
 	.route('/:productId')

@@ -1,6 +1,7 @@
 const productDB = require('../db/product.db');
 const ApiError = require('../utils/apiError.utils');
 const { StatusCodes } = require('http-status-codes');
+const { v4: uuid } = require('uuid');
 class ProductService {
 	/**
 	 * @description Retrieve all products from In-memory database.
@@ -22,7 +23,7 @@ class ProductService {
 	 * @returns {Object} product object.
 	 */
 	async getById(productId) {
-		const product = productDB.find((product) => product._id === Number(productId));
+		const product = productDB.find((product) => product._id === productId);
 		if (!product) {
 			throw new ApiError(StatusCodes.NOT_FOUND, 'Products not found');
 		}
@@ -38,7 +39,7 @@ class ProductService {
 	async create(productData) {
 		const newProduct = productDB.push({
 			...productData,
-			_id: productDB.length + 1,
+			_id: uuid(),
 			createdAt: Date.now(),
 			updatedAt: Date.now(),
 		});
@@ -55,7 +56,7 @@ class ProductService {
 	 * @returns {Object} updated product 	Object.
 	 */
 	async update(productId, productData) {
-		const productIndex = productDB.findIndex((product) => product._id === Number(productId));
+		const productIndex = productDB.findIndex((product) => product._id === productId);
 		if (productIndex === -1) {
 			throw new ApiError(StatusCodes.NOT_FOUND, 'Product not found');
 		}
@@ -74,7 +75,7 @@ class ProductService {
 	 * @returns {Object} deleted product Object.
 	 */
 	async delete(productId) {
-		const product = productDB.findIndex((product) => product._id === Number(productId));
+		const product = productDB.findIndex((product) => product._id === productId);
 		if (product === -1) {
 			throw new ApiError(StatusCodes.NOT_FOUND, 'Product not found');
 		}

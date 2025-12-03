@@ -1,0 +1,42 @@
+{
+	"swaggerDefinition": {
+		"info": {
+			"title": "Product Management CRUD REST API (IN MEMORY)",
+			"version": "1.0.0",
+			"description": "This API provides full CRUD (Create, Read, Update, Delete) functionality for managing product data.",
+			"contact": {
+				"name": "GITHUB LINK",
+				"url": "https://github.com/susovandev/WebSkitter-Assignment-2"
+			},
+			"servers": [
+				{
+					"url": "http://localhost:5000"
+				},
+				{
+					"url": "http://localhost:5001"
+				}
+			]
+		},
+		"tags": [
+			{
+				"name": "Product",
+				"description": "API endpoints for managing products"
+			}
+		],
+		"schemes": ["http", "https"],
+		"securityDefinitions": {
+			"bearerAuth": {
+				"type": "apiKey",
+				"in": "header",
+				"name": "Authorization",
+				"description": "Bearer token needed to access this API"
+			}
+		},
+		"security": [
+			{
+				"bearerAuth": []
+			}
+		]
+	},
+	"apis": ["app.js", "./app/routes/*.js", "./controllers/*.js", "./models/*.js", "./services/*.js"]
+}

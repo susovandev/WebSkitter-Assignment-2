@@ -2,6 +2,11 @@ const express = require('express');
 const constants = require('./constants');
 const { StatusCodes } = require('http-status-codes');
 
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+const SwaggerOptions = require('../swagger.json');
+const swaggerDocument = swaggerJsDoc(SwaggerOptions);
+
 const routeNotFoundHandler = require('./middlewares/404.middleware');
 const globalErrorHandler = require('./middlewares/error.middleware');
 
@@ -19,9 +24,14 @@ app.get('/', (req, res) => {
 		message: 'Hello World',
 	});
 });
+
 // Product Routes
 const productRoutes = require('./routes/product.routes');
 app.use('/api/products', productRoutes);
+
+//swagger js doc
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // 404 handler
 app.use(routeNotFoundHandler);
 

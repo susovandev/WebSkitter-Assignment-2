@@ -9,7 +9,7 @@ const productValidation = {
 		inStock: Joi.boolean().default(true).required(),
 	}),
 	getProductByIdSchema: Joi.object({
-		productId: Joi.number().integer().required(),
+		productId: Joi.string().guid().required(),
 	}),
 	updateProductSchema: Joi.object({
 		name: Joi.string().min(3).max(100).optional(),
